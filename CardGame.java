@@ -48,44 +48,56 @@ public class CardGame {
 		for (Card c: playerCards)
 			System.out.println(c);
 
-		System.out.println("pairs is " + checkFor2Kind() ? "Yes" : "No"));
+		System.out.println("pairs is " + (checkFor2Kind() ? "Yes" : "No"));
 
 	}//end main
 
-	//Start of new game
+	//START OF NEW FEATURE
 
 	//Allow the player to draw more cards
 
-	public static void shuffle() {
+	Scanner userinput = new Scanner(system.in);
+	String response;
+	do {
+		System.out.print("\nDo you want to draw another card? (yes/no): ");
+		response = userInput.nextLine().trim().toLowerCase();
 
-		//shuffling the cards by deleting and reinserting
-		for (int i = 0; i < deckOfCards.size(); i++) {
-			int index = (int) (Math.random()*deckOfCards.size());
-			Card c = deckOfCards.remove(index);
-			//System.out.println("c is " + c + ", index is " + index);
-			deckOfCards.add(c);
-		}
+		if (response.equals("yes")){
+			if (!deckOfCards.isEmpty()) {
+				Card drawn = deckOfCards.remove(0);
+				playerCards.add(drawn);
+				System.out.println("You drew: " + drawn);
+			} else {
+				System.out.println("No more cards in the deck!");
+			}
+			
+			System.out.println("Updated Hand:");
+			for (Card c : playerCards){
+				System.out.println(c);
+
+			System.out.println("Pairs found: " + (checkFor2Kind() ? "Yes" : "No"));
+			}
+		}While (response.equals("yes"));
+		userInput.close();
+	}
+	
+	// Shuffling the cards using Collections shuffle
+	public static void shuffle() {
+		Collections.shuffle(deckofCards);
 	}
 
-	//check for 2 of a kind in the players hand
+
+
+	// Check for 2 of a kind in the player's hand
 	public static boolean checkFor2Kind() {
-
-		int count = 0;
-		for(int i = 0; i < playerCards.size() - 1; i++) {
-			Card current = playerCards.get(i);
-			Card next = playerCards.get(i+1);
-			
+		for (int i = 0; i < playerCards.size(); i++) {
 			for(int j = i+1; j < playerCards.size(); j++) {
-				next = playerCards.get(j);
-				//System.out.println(" comparing " + current);
-				//System.out.println(" to " + next);
-				if(current.equals(next))
-					count++;
-			}//end of inner for
-			if(count == 1)
-				return true;
+				if (playerCards.get(i).equals(playerCards.get(j))) {
+					return true;
+				}
 
-		}//end outer for
+			}//end outer for
+		}
 		return false;
 	}
 }//end class
