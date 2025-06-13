@@ -4,11 +4,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Collections;
+
 
 public class CardGame {
 
-	private static ArrayList<Card> deckOfCards = new ArrayList<Card>();
-	private static ArrayList<Card> playerCards = new ArrayList<Card>();
+	private static ArrayList<Card> deckOfCards = new ArrayList<>();
+	private static ArrayList<Card> playerCards = new ArrayList<>();
 
 
 	public static void main(String[] args) {
@@ -18,15 +20,17 @@ public class CardGame {
 			input = new Scanner(new File("cards.txt"));
 		} catch (FileNotFoundException e) {
 			// error
-			System.out.println("error");
+			System.out.println("error: Cannont find file");
 			e.printStackTrace();
+			return;
 		}
-
-		while(input.hasNext()) {
-			String[] fields  = input.nextLine().split(",");
+		
+		// Read cards from file and populate deck
+		while (input.hasNext()) {
+			String[] fields = input.nextLine().split(",");
 			//	public Card(String cardSuit, String cardName, int cardValue, String cardPicture) {
-			Card newCard = new Card(fields[0], fields[1].trim(),
-					Integer.parseInt(fields[2].trim()), fields[3]);
+			Card newCard = new Card(fields[0].trim(), fields[1].trim(),
+					Integer.parseInt(fields[2].trim()), fields[3].trim());
 			deckOfCards.add(newCard);	
 		}
 
@@ -36,17 +40,21 @@ public class CardGame {
 			//System.out.println(c);
 
 		//deal the player 5 cards
-		for(int i = 0; i < 4; i++) {
-			playerCards.add(deckOfCards.remove(i));
+		for(int i = 0; i < 5; i++) {
+			playerCards.add(deckOfCards.remove(0));
 		}
 		
-		System.out.println("players cards");
-		for(Card c: playerCards)
+		System.out.println("Player's cards");
+		for (Card c: playerCards)
 			System.out.println(c);
 
-		System.out.println("pairs is " + checkFor2Kind());
+		System.out.println("pairs is " + checkFor2Kind() ? "Yes" : "No"));
 
 	}//end main
+
+	//Start of new game
+
+	//Allow the player to draw more cards
 
 	public static void shuffle() {
 
