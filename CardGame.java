@@ -80,9 +80,9 @@ public class CardGame {
 
 			System.out.println("Pairs found: " + (checkFor2Kind() ? "Yes" : "No"));
 			}
-		} while (response.equals("yes"));
-		userInput.close();
-	}
+		}
+	} while (response.equals("yes"));
+	userInput.close();
 	
 	// Shuffling the cards using Collections shuffle
 	public static void shuffle() {
