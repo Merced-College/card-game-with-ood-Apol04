@@ -56,7 +56,7 @@ public class CardGame {
 
 	//Allow the player to draw more cards
 
-	Scanner userinput = new Scanner(system.in);
+	Scanner userInput = new Scanner(system.in);
 	String response;
 	do {
 		System.out.print("\nDo you want to draw another card? (yes/no): ");
@@ -77,7 +77,7 @@ public class CardGame {
 
 			System.out.println("Pairs found: " + (checkFor2Kind() ? "Yes" : "No"));
 			}
-		}While (response.equals("yes"));
+		} while (response.equals("yes"));
 		userInput.close();
 	}
 	
