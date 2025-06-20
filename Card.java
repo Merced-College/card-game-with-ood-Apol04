@@ -6,7 +6,7 @@ package cardGame;
 
 public class Card {
   private String cardSuit;
-  private String CardName;
+  private String cardName;
   private int cardValue;
   private String cardPicture;
 
@@ -40,15 +40,15 @@ public class Card {
     this.cardSuit = suit;
   }
 
-  public void setCardName(String Name) {
+  public void setCardName(String name) {
     this.cardName = name;
   }
 
-  public void setCardValue(int Value) {
+  public void setCardValue(int value) {
     this.cardValue = value;
   }
 
-  public void setCardPicture(String Picture) {
+  public void setCardPicture(String picture) {
     this.cardPicture = picture;
   }
 
