@@ -86,7 +86,7 @@ public class CardGame {
 	
 	// Shuffling the cards using Collections shuffle
 	public static void shuffle() {
-		Collections.shuffle(deckofCards);
+		Collections.shuffle(deckOfCards);
 	}
 
 
