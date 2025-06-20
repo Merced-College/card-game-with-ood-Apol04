@@ -1,4 +1,4 @@
-package cardGame;
+//package cardGame;
 
 // Name: Angel A. Cisneros
 // Date: June 13 2025
@@ -57,7 +57,7 @@ public class Card {
   public boolean equals(Object obj) {
     if (obj instanceof Card) {
       Card other = (Card) obj;
-      return this.cardName.equals(other.CardName) &&
+      return this.cardName.equals(other.cardName) &&
         this.cardSuit.equals(other.cardSuit);
     }
     return false;
